@@ -1,9 +1,9 @@
 package com.cloud.cos.dao;
 
 import com.cloud.cos.bean.ResourceLocation;
-import com.cloud.cos.bean.Tenant;
+import com.googlecode.genericdao.dao.hibernate.GenericDAO;
 
-public interface ResourceDao {
+public interface ResourceDao extends GenericDAO<ResourceLocation, Integer> {
 
-	public ResourceLocation save(ResourceLocation resource);
+	public boolean save(ResourceLocation resource);
 }
