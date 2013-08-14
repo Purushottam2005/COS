@@ -15,7 +15,7 @@ public class ResourceServiceImpl implements ResourceService {
 	private ResourceDao resourceDao;
 
 	@Override
-	public ResourceLocation addResource(ResourceLocation resource) {
+	public boolean addResource(ResourceLocation resource) {
 		return resourceDao.save(resource);
 	}
 
