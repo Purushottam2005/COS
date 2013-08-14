@@ -33,7 +33,7 @@ http://cxf.apache.org/schema/jaxws.xsd
 		destroy-method="close">
 		<property name="driverClass" value="org.apache.derby.jdbc.EmbeddedDriver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:derby:D:/cloud+/cos/cos_dev;dbuseUnicode=true&amp;characterEncoding=UTF-8"></property>
+			value="jdbc:derby:D:/cloud+/cos/cos_dev;create=true;dbuseUnicode=true&amp;characterEncoding=UTF-8"></property>
 
 		<property name="user" value=""></property>
 		<property name="password" value=""></property>

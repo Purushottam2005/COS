@@ -13,24 +13,29 @@ import org.mule.api.processor.MessageProcessor;
 import org.mule.routing.AbstractAggregator;
 import org.mule.routing.correlation.CollectionCorrelatorCallback;
 import org.mule.routing.correlation.EventCorrelatorCallback;
+import org.python.modules.newmodule;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cloud.cos.bean.ResourceLocation;
 import com.cloud.cos.bean.Tenant;
+import com.cloud.cos.service.ResourceService;
 import com.cloud.cos.service.TenantService;
 
 public class TenantMsgProcessor extends AbstractAggregator implements
 		MessageProcessor {
 
 	private Logger log = Logger.getLogger(TenantMsgProcessor.class);
+	
 	@Autowired
 	private TenantService tenantService;
+	
 	@Override
 	public MuleEvent process(MuleEvent event) throws MuleException {
 		addTenant();
+		
 		log.info(">>>into the processor");
 		List<Tenant> tenantlist=tenantService.getAll();
-		
 		log.info(">>>into the processor2");
 		MuleMessage msg= event.getMessage();
 		log.info(">>>payload:"+msg.getPayload());
@@ -38,6 +43,7 @@ public class TenantMsgProcessor extends AbstractAggregator implements
 		msg.setPayload(json);
 		event.setMessage(msg);
 		log.info(">>>payload2:"+msg.getPayload());
+		
 		return event;
 	}
 
@@ -64,5 +70,5 @@ public class TenantMsgProcessor extends AbstractAggregator implements
 		tenantService.addTenant(tenant);
 		log.info("complete add tenant...");
 	}
-
+	
 }

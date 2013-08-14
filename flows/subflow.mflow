@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="cos">
-    <flow SubFlow="false" name="cosFlow1" entity-id="24c6c5c8-b5eb-409f-83f0-7e9931ebe282">
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="subflow">
+    <flow SubFlow="false" name="subflow1" entity-id="8ce76476-2e67-42b1-b2c6-2c508479fb79">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -28,7 +28,7 @@
                     <property name="transformer-refs"/>
                     <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="path"/>
+                    <property value="second" name="path"/>
                     <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
@@ -42,7 +42,7 @@
             <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="Custom Processor" entity-id="Custom Processor#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="com.cloud.cos.mule.routers.TenantMsgProcessor" name="class"/>
+                    <property value="com.cloud.cos.mule.routers.ResourceMsgProcessor" name="class"/>
                     <property value="3" name="auxiliary;index"/>
                 </properties>
             </pattern>
