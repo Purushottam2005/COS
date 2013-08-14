@@ -13,11 +13,4 @@ import com.cloud.cos.dao.ResourceDao;
 public class ResourceDaoImpl  extends BaseDao<ResourceLocation,Integer> implements ResourceDao{
 
 	private Logger log = Logger.getLogger(ResourceDaoImpl.class);
-
-	
-	@Override
-	public boolean save(ResourceLocation resource) {
-		return super.save(resource);
-	}
-
 }
