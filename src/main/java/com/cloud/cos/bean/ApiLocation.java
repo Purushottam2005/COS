@@ -19,9 +19,9 @@ public class ApiLocation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "api_id", length = 10)
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int apiId;
+	int id;
 	
 	@Column(name = "api", columnDefinition = "varchar(1024)")
 	int api;
@@ -29,16 +29,10 @@ public class ApiLocation implements Serializable {
 	@Column(name = "host", columnDefinition = "varchar(255)")
 	String host;
 	
-	@Column(name = "port", columnDefinition = "int(10)")
+	@Column(name = "port")
 	int port;
 
-	public int getApiId() {
-		return apiId;
-	}
-
-	public void setApiId(int apiId) {
-		this.apiId = apiId;
-	}
+	
 
 	public int getApi() {
 		return api;
@@ -62,6 +56,14 @@ public class ApiLocation implements Serializable {
 
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

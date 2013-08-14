@@ -19,34 +19,20 @@ public class ResourceLocation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "resource_id", length = 10)
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int resourceId;
+	int id;
 	
 	@Column(name = "resource_name", columnDefinition = "varchar(255)")
-	String resourceName;
+	String name;
 	
 	@Column(name = "host", columnDefinition = "varchar(255)")
 	String host;
 	
-	@Column(name = "port", columnDefinition = "int(10)")
+	@Column(name = "port")
 	int port;
 
-	public int getResourceId() {
-		return resourceId;
-	}
-
-	public void setResourceId(int resourceId) {
-		this.resourceId = resourceId;
-	}
-
-	public String getResourceName() {
-		return resourceName;
-	}
-
-	public void setResourceName(String resourceName) {
-		this.resourceName = resourceName;
-	}
+	
 
 	public String getHost() {
 		return host;
@@ -62,6 +48,26 @@ public class ResourceLocation implements Serializable {
 
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

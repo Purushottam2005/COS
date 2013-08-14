@@ -40,7 +40,7 @@ MessageProcessor {
 		ResourceLocation resource = new ResourceLocation();
 		resource.setHost("19216011");
 		resource.setPort(80);
-		resource.setResourceName("myresource");
+		resource.setName("myresource");
 		resourceService.addResource(resource);
 		log.info("complete add resource...");
 	}
