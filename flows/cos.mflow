@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="cos">
-    <flow SubFlow="false" name="cosFlow1" entity-id="a04eb4b3-4824-4f93-ba14-3671afa95d0b">
+    <flow SubFlow="false" name="cosFlow1" entity-id="b2727997-efeb-4b2c-8c5d-94cbb5c4fcb4">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
