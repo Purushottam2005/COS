@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <flow name="ServiceChoiceRouterFlow1" doc:name="ServiceChoiceRouterFlow1">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8080" path="router" doc:name="HTTP"/>
+        <choice doc:name="Choice">
+            <when expression="#[message.inboundProperties['sendto']=='one']">
+                <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Portal" path="one"/>
+            </when>
+            <when expression="#[message.inboundProperties['sendto']=='two']">
+                <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Paas" path="two"/>
+            </when>
+            <when expression="#[message.inboundProperties['sendto']=='three']">
+                <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to sub Cos" path="three"/>
+            </when>
+            <otherwise>
+                <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Default Server" path="default"/>
+            </otherwise>
+        </choice>
+        <custom-processor class="com.cloud.cos.mule.routers.ResourceMsgProcessor" doc:name="Custom Processor" name="MessageDeal"/>
+    </flow>
+</mule>
