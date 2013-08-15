@@ -36,6 +36,7 @@ MessageProcessor {
 	@Override
 	public MuleEvent process(MuleEvent event) throws MuleException {
 		List<ApiLocation> list = apiLocationDao.getAllList();
+		
 		return event;
 	}
 }
