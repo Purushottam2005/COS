@@ -20,6 +20,11 @@ public class ResourceLocationDaoImpl  extends HibernateDaoSupport implements Res
 
 	private Logger log = Logger.getLogger(ResourceLocationDaoImpl.class);
 
+	@Autowired
+	@Resource(name = "sessionFactory")  
+	public void setCosSessionFactory(SessionFactory sessionFactory) {
+		super.setSessionFactory(sessionFactory);
+	}
 	@Override
 	public boolean save(ResourceLocation resourceLocation) {
 		this.getHibernateTemplate().save(resourceLocation);
@@ -34,9 +39,5 @@ public class ResourceLocationDaoImpl  extends HibernateDaoSupport implements Res
 		return getHibernateTemplate().find("from ResourceLocation");
 	}
 	
-	@Autowired
-	@Resource(name = "sessionFactory")  
-	public void setCosSessionFactory(SessionFactory sessionFactory) {
-		super.setSessionFactory(sessionFactory);
-	}
+	
 }

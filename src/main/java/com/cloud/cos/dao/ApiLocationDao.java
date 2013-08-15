@@ -1,8 +1,12 @@
 package com.cloud.cos.dao;
 
+import java.util.List;
+
 import com.cloud.cos.bean.ApiLocation;
-import com.googlecode.genericdao.dao.hibernate.GenericDAO;
 
-public interface ApiLocationDao extends GenericDAO<ApiLocation, Integer>{
 
+public interface ApiLocationDao{
+	public boolean save(ApiLocation apiLocation);
+	
+	public List<ApiLocation> getAllList();
 }

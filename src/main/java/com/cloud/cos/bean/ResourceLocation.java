@@ -19,7 +19,7 @@ public class ResourceLocation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "resource_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	

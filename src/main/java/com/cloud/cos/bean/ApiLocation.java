@@ -19,7 +19,7 @@ public class ApiLocation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "api_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	
