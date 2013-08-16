@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    <flow name="RouterFlow1" doc:name="RouterFlow1">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP"/>
+        <custom-processor doc:name="Choice_Processor" class="com.cloud.cos.mule.routers.ChoiceFlowMsgProcessor" />
+        <choice doc:name="Choice">
+            <when expression="#[way='resource']">
+                <processor-chain doc:name="ResourceLocationProcess">
+                    <custom-processor doc:name="ResourceLocationProcess" class="com.cloud.cos.mule.routers.ResourceLocationProcess" name="ResourceLocationProcess"/>
+                </processor-chain>
+            </when>
+            <when expression="#[way='api']">
+                <processor-chain doc:name="ApiLocationProcess">
+                    <custom-processor doc:name="ApiLocationLocationProcess" class="com.cloud.cos.mule.routers.ApiLocationLocationProcess" name="ApiLocationLocationProcess"/>
+                </processor-chain>
+            </when>
+            <otherwise>
+                <processor-chain doc:name="OtherProcess">
+                    <custom-processor doc:name="DefaultProcess" class="com.cloud.cos.mule.routers.DefaultProcess" name="DefaultProcess"/>
+                </processor-chain>
+            </otherwise>
+        </choice>
+    </flow>
+</mule>
