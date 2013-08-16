@@ -18,34 +18,35 @@ import com.cloud.cos.bean.ResourceLocation;
 import com.cloud.cos.service.ResourceLocationService;
 
 public class ResourceMsgProcessor extends AbstractAggregator implements
-MessageProcessor {
+		MessageProcessor {
 
 	private Logger log = Logger.getLogger(ResourceMsgProcessor.class);
-	
+
 	@Autowired
 	private ResourceLocationService resourceService;
-	
+
 	@Override
 	protected EventCorrelatorCallback getCorrelatorCallback(
 			MuleContext muleContext) {
-		EventCorrelatorCallback ecc=new CollectionCorrelatorCallback(muleContext, false, null);
+		EventCorrelatorCallback ecc = new CollectionCorrelatorCallback(
+				muleContext, false, null);
 		return ecc;
 	}
-	
+
 	@Override
 	public MuleEvent process(MuleEvent event) throws MuleException {
 		log.info("start to insert resources");
 		addResource();
 		log.info("start to query resources");
 		MuleMessage mgs = event.getMessage();
-		List<ResourceLocation> list=resourceService.getAllList();
+		List<ResourceLocation> list = resourceService.getAllList();
 		String listInfo = JSON.toJSONString(list);
 		mgs.setPayload(listInfo);
 		event.setMessage(mgs);
 		log.info("end processor...");
 		return event;
 	}
-	
+
 	public void addResource() {
 		log.info("add resource");
 		ResourceLocation resource = new ResourceLocation();

@@ -4,7 +4,7 @@
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <flow name="ServiceChoiceRouterFlow1" doc:name="ServiceChoiceRouterFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8080" path="router" doc:name="HTTP"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8086" path="router" doc:name="HTTP"/>
         <choice doc:name="Choice">
             <when expression="#[message.inboundProperties['sendto']=='one']">
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Portal" path="one"/>
@@ -19,6 +19,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Default Server" path="default"/>
             </otherwise>
         </choice>
-        <custom-processor class="com.cloud.cos.mule.routers.ResourceMsgProcessor" doc:name="Custom Processor" name="MessageDeal"/>
+        <custom-processor class="com.cloud.cos.mule.routers.ResourceMsgProcessor" doc:name="Custom Processor" />
     </flow>
 </mule>

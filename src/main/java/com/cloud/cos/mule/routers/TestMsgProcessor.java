@@ -25,7 +25,7 @@ import com.cloud.cos.service.ResourceLocationService;
 public class TestMsgProcessor extends AbstractAggregator implements
 		MessageProcessor {
 
-	private Logger log = Logger.getLogger(ResourceMsgProcessor.class);
+	private Logger log = Logger.getLogger(TestMsgProcessor.class);
 
 	@Autowired
 	private ResourceLocationService resourceService;
@@ -45,21 +45,24 @@ public class TestMsgProcessor extends AbstractAggregator implements
 	@Override
 	public MuleEvent process(MuleEvent event) throws MuleException {
 		List<ApiLocation> list = apiLocationService.getAllList();
-		List<Object> payloadList= new ArrayList<Object>();
-		for(int i=0;i<1000;i++)
-		for(ApiLocation apiLocation:list){
+		List<Object> payloadList = new ArrayList<Object>();
+		MuleMessage msg = event.getMessage();
+		for (int j = 0; j < list.size(); j++) {
+			ApiLocation apiLocation = list.get(j);
 			MuleClient client = new MuleClient(muleContext);
 			Map<String, String> props = new HashMap<String, String>();
 			props.put("http.method", "PUT");
-			MuleMessage result = client.send("http://localhost:80/rest/test","",props);
-			log.info("the one client message:"+result);
+			MuleMessage result = client.send("http://" + apiLocation.getHost()
+					+ ":" + apiLocation.getPort() + apiLocation.getApi(),
+					msg.getPayload(), props);
+			// log.info("the one client message:" + result);
 			payloadList.add(result.getPayload(String.class));
 		}
 		String payload = JSON.toJSONString(payloadList);
-		log.info("the all message"+payload);
-		MuleMessage msg = event.getMessage();
-		msg.setPayload(payload);
-		event.setMessage(msg);
+		// log.info("the all message" + payload);
+		event.setFlowVariable("sendto", "huahua>>>>>>>>>>><><><><>");
+		// msg.setPayload(payload);
+		// event.setMessage(msg);
 		return event;
 	}
 }

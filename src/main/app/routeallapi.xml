@@ -6,5 +6,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     <flow name="RouteAllApiFlow1" doc:name="RouteAllApiFlow1">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8086" doc:name="HTTP" path="routeall"/>
         <custom-processor class="com.cloud.cos.mule.routers.TestMsgProcessor" doc:name="Custom Processor" />
+        <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8080" path="rest/test" method="PUT" doc:name="HTTP"/>
     </flow>
 </mule>
