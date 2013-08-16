@@ -9,8 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "resource_location")
+@Cache(usage =CacheConcurrencyStrategy.READ_WRITE)
 public class ResourceLocation implements Serializable {
 	
 	/**
@@ -19,7 +23,7 @@ public class ResourceLocation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "resource_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	

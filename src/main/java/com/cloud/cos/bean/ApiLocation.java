@@ -9,38 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "api_location")
+@Cache(usage =CacheConcurrencyStrategy.READ_WRITE)
 public class ApiLocation implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "api_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
-	
+
 	@Column(name = "api", columnDefinition = "varchar(1024)")
-	int api;
-	
+	String api;
+
 	@Column(name = "host", columnDefinition = "varchar(255)")
 	String host;
-	
+
 	@Column(name = "port")
 	int port;
-
-	
-
-	public int getApi() {
-		return api;
-	}
-
-	public void setApi(int api) {
-		this.api = api;
-	}
 
 	public String getHost() {
 		return host;
@@ -65,5 +59,13 @@ public class ApiLocation implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	public String getApi() {
+		return api;
+	}
+
+	public void setApi(String api) {
+		this.api = api;
+	}
+
 }

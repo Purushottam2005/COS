@@ -54,12 +54,18 @@ http://cxf.apache.org/schema/jaxws.xsd
 		<!-- 设置hibernate相关属性 -->
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">  org.hibernate.dialect.DerbyDialect</prop>
+				<prop key="hibernate.dialect"> org.hibernate.dialect.DerbyDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="generate_statistics">true</prop>
 				<prop key="hibernate.use_sql_comments">false</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<!-- <prop key="hibernate.cache.provider_calss">org.hibernate.cache.EhCacheProvider</prop> -->
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>  
 			</props>
 		</property>
 
@@ -89,9 +95,7 @@ http://cxf.apache.org/schema/jaxws.xsd
 	</bean>
 
 
-	<!-- <bean id="tenantDao" class="com.cloud.cos.dao.impl.TenantDaoImpl">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean> -->
+	<!-- <bean id="tenantDao" class="com.cloud.cos.dao.impl.TenantDaoImpl"> 
+		<property name="sessionFactory"> <ref bean="sessionFactory" /> </property> 
+		</bean> -->
 </beans>
