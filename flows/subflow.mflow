@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="subflow">
-    <flow SubFlow="false" name="subflow1" entity-id="8ce76476-2e67-42b1-b2c6-2c508479fb79">
+    <flow SubFlow="false" name="subflow1" entity-id="b2f62389-7338-468c-8468-f37078a92784">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
             <property value="1" name="auxiliary;index"/>
+            <property name="tracking:enable-default-events"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
             <graphicalData height="0" width="0" y="0" x="0"/>
             <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
-                <graphicalData height="0" width="0" y="0" x="0"/>
+                <graphicalData height="173" width="68" y="71" x="19"/>
                 <properties>
                     <property value="8081" name="port"/>
                     <property value="localhost" name="host"/>
@@ -25,27 +25,20 @@
                     <property value="request-response" name="exchange-pattern"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="transformer-refs"/>
                     <property name="httpLabel"/>
+                    <property name="transformer-refs"/>
                     <property name="address"/>
-                    <property value="second" name="path"/>
                     <property name="encoding"/>
+                    <property value="objecttojson" name="path"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
                     <property name="user"/>
-                    <property name="responseTimeout"/>
-                    <property name="mimeType"/>
                     <property value="2" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="Custom Processor" entity-id="Custom Processor#1">
-                <graphicalData height="0" width="0" y="0" x="0"/>
-                <properties>
-                    <property value="com.cloud.cos.mule.routers.ResourceMsgProcessor" name="class"/>
-                    <property value="3" name="auxiliary;index"/>
-                </properties>
-            </pattern>
         </lane>
     </flow>
     <description></description>
