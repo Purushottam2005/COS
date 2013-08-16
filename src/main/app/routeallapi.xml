@@ -4,7 +4,7 @@
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <flow name="RouteAllApiFlow1" doc:name="RouteAllApiFlow1">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP" path="routeall"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8086" doc:name="HTTP" path="routeall"/>
         <custom-processor class="com.cloud.cos.mule.routers.TestMsgProcessor" doc:name="Custom Processor" />
     </flow>
 </mule>

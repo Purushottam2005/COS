@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="RouteAllApi">
-    <flow SubFlow="false" name="RouteAllApiFlow1" entity-id="30073547-6a6a-47f3-813c-6ba0243cd366">
+    <flow SubFlow="false" name="RouteAllApiFlow1" entity-id="d66afea1-e790-4fa0-9f1c-f40d5df08f69">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -14,7 +14,7 @@
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="true" name="auxiliary;erased;contentType"/>
-                    <property value="8081" name="port"/>
+                    <property value="8086" name="port"/>
                     <property value="true" name="auxiliary;erased;mimeType"/>
                     <property value="localhost" name="host"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
