@@ -121,6 +121,11 @@
 
 		<!-- Mule Dependencies -->
 		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-amqp</artifactId>
+			<version>${mule.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.mule</groupId>
 			<artifactId>mule-core</artifactId>
 			<version>${mule.version}</version>
