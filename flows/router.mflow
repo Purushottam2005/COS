@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="Router">
-    <flow SubFlow="false" name="RouterFlow1" entity-id="e438975c-7163-4f0d-977d-7fdd49fb6976">
+    <flow SubFlow="false" name="RouterFlow1" entity-id="a8495135-50dc-404d-bcc5-32e350f3d02a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -49,47 +49,26 @@
             <splitter index="4" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="4" name=";INDEX"/>
-                    <property-collection name="14387cd7-1b12-4ff0-8b25-0144888b8b27">
+                    <property-collection name="4f2de407-111c-4072-abd4-40b3d211cf44">
                         <property value="#[way='api']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[way='api']" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="d5628ec9-aaca-460c-8fdc-2bcca72e33f7">
+                    <property-collection name="a0647835-08d3-44bf-b6dc-5cd146397174">
                         <property value="true" name="choice.otherwise"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
-                    <property-collection name="5bf59aa1-1fb4-48ad-87ec-a0e773cda9fc">
+                    <property-collection name="33e40e68-f133-4a04-a96a-475423d590f2">
                         <property value="#[way='resource']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[way='resource']" name="expression"/>
                         </property-collection>
                     </property-collection>
                 </properties>
-                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2">
-                    <properties>
-                        <property value="4" name=";INDEX"/>
-                        <property-collection name="14387cd7-1b12-4ff0-8b25-0144888b8b27">
-                            <property value="#[way='api']" name="choice.expression"/>
-                            <property-collection name="choice.attributes">
-<property value="#[way='api']" name="expression"/>
-                            </property-collection>
-                        </property-collection>
-                        <property-collection name="d5628ec9-aaca-460c-8fdc-2bcca72e33f7">
-                            <property value="true" name="choice.otherwise"/>
-                            <property-collection name="choice.attributes"/>
-                        </property-collection>
-                        <property-collection name="5bf59aa1-1fb4-48ad-87ec-a0e773cda9fc">
-                            <property value="#[way='resource']" name="choice.expression"/>
-                            <property-collection name="choice.attributes">
-<property value="#[way='resource']" name="expression"/>
-                            </property-collection>
-                        </property-collection>
-                    </properties>
-                </pattern>
+                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2"/>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="6" hadOnlyOneElement="false" entity-id="5bf59aa1-1fb4-48ad-87ec-a0e773cda9fc">
+                    <lane isChoiceOtherwiseLane="false" index="6" hadOnlyOneElement="false" entity-id="33e40e68-f133-4a04-a96a-475423d590f2">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="ResourceLocationProcess" entity-id="Processor Chain#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -100,18 +79,15 @@
     <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="ResourceLocationProcess" entity-id="Custom Processor#2">
         <graphicalData height="0" width="0" y="0" x="0"/>
         <properties>
-            <property name="updated"/>
-            <property value="ResourceLocationProcess" name="name"/>
             <property value="com.cloud.cos.mule.routers.ResourceLocationProcess" name="class"/>
             <property value="7" name="auxiliary;index"/>
         </properties>
-        <description></description>
     </pattern>
 </lane>
                             </compartment>
                         </scope>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="9" hadOnlyOneElement="false" entity-id="14387cd7-1b12-4ff0-8b25-0144888b8b27">
+                    <lane isChoiceOtherwiseLane="false" index="9" hadOnlyOneElement="false" entity-id="4f2de407-111c-4072-abd4-40b3d211cf44">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="ApiLocationProcess" entity-id="Processor Chain#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -122,18 +98,15 @@
     <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="ApiLocationLocationProcess" entity-id="Custom Processor#3">
         <graphicalData height="0" width="0" y="0" x="0"/>
         <properties>
-            <property name="updated"/>
-            <property value="ApiLocationLocationProcess" name="name"/>
             <property value="com.cloud.cos.mule.routers.ApiLocationLocationProcess" name="class"/>
             <property value="10" name="auxiliary;index"/>
         </properties>
-        <description></description>
     </pattern>
 </lane>
                             </compartment>
                         </scope>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="12" hadOnlyOneElement="false" entity-id="d5628ec9-aaca-460c-8fdc-2bcca72e33f7">
+                    <lane isChoiceOtherwiseLane="true" index="12" hadOnlyOneElement="false" entity-id="a0647835-08d3-44bf-b6dc-5cd146397174">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="OtherProcess" entity-id="Processor Chain#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -144,12 +117,9 @@
     <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="DefaultProcess" entity-id="Custom Processor#4">
         <graphicalData height="0" width="0" y="0" x="0"/>
         <properties>
-            <property name="updated"/>
-            <property value="DefaultProcess" name="name"/>
             <property value="com.cloud.cos.mule.routers.DefaultProcess" name="class"/>
             <property value="13" name="auxiliary;index"/>
         </properties>
-        <description></description>
     </pattern>
 </lane>
                             </compartment>
