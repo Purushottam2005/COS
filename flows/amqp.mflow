@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="amqp">
+    <flow SubFlow="false" name="amqpFlow1" entity-id="689eb172-b6e4-42c1-966a-3822aa9c964f">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="59de041e-d23e-4e71-a54f-014cdcbae45e">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/amqp/endpoint" name="AMQP" entity-id="d7d0dc57-e3f9-44a7-9ad1-6e1571376b21">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="request-response" name="exchange-pattern"/>
+                </properties>
+            </endpoint>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>
