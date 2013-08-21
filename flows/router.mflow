@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="Router">
-    <flow SubFlow="false" name="RouterFlow1" entity-id="a8495135-50dc-404d-bcc5-32e350f3d02a">
+    <flow SubFlow="false" name="RouterFlow1" entity-id="8d20b5d0-ba2c-4445-9594-26be047312b2">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -49,26 +49,26 @@
             <splitter index="4" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property-collection name="4f2de407-111c-4072-abd4-40b3d211cf44">
-                        <property value="#[way='api']" name="choice.expression"/>
-                        <property-collection name="choice.attributes">
-                            <property value="#[way='api']" name="expression"/>
-                        </property-collection>
-                    </property-collection>
-                    <property-collection name="a0647835-08d3-44bf-b6dc-5cd146397174">
-                        <property value="true" name="choice.otherwise"/>
-                        <property-collection name="choice.attributes"/>
-                    </property-collection>
-                    <property-collection name="33e40e68-f133-4a04-a96a-475423d590f2">
+                    <property-collection name="5483b064-3414-4140-a97d-d8cfb598f96f">
                         <property value="#[way='resource']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[way='resource']" name="expression"/>
                         </property-collection>
                     </property-collection>
+                    <property-collection name="bbda7366-3acb-4364-8a91-39d7cbefa7cf">
+                        <property value="#[way='api']" name="choice.expression"/>
+                        <property-collection name="choice.attributes">
+                            <property value="#[way='api']" name="expression"/>
+                        </property-collection>
+                    </property-collection>
+                    <property-collection name="5e01e3bc-1725-4e02-a4a0-85b348eb9c5e">
+                        <property value="true" name="choice.otherwise"/>
+                        <property-collection name="choice.attributes"/>
+                    </property-collection>
                 </properties>
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2"/>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="6" hadOnlyOneElement="false" entity-id="33e40e68-f133-4a04-a96a-475423d590f2">
+                    <lane isChoiceOtherwiseLane="false" index="6" hadOnlyOneElement="false" entity-id="5483b064-3414-4140-a97d-d8cfb598f96f">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="ResourceLocationProcess" entity-id="Processor Chain#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -87,7 +87,7 @@
                             </compartment>
                         </scope>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="9" hadOnlyOneElement="false" entity-id="4f2de407-111c-4072-abd4-40b3d211cf44">
+                    <lane isChoiceOtherwiseLane="false" index="9" hadOnlyOneElement="false" entity-id="bbda7366-3acb-4364-8a91-39d7cbefa7cf">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="ApiLocationProcess" entity-id="Processor Chain#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -106,7 +106,7 @@
                             </compartment>
                         </scope>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="12" hadOnlyOneElement="false" entity-id="a0647835-08d3-44bf-b6dc-5cd146397174">
+                    <lane isChoiceOtherwiseLane="true" index="12" hadOnlyOneElement="false" entity-id="5e01e3bc-1725-4e02-a4a0-85b348eb9c5e">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="OtherProcess" entity-id="Processor Chain#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
