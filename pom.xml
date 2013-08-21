@@ -118,6 +118,7 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.1.23</version>
 		</dependency>
+<<<<<<< HEAD
 		<!-- ======================================== -->
 		<!-- rabbitMQ依赖 -->
 		<!-- ======================================== -->
@@ -126,7 +127,15 @@
 <!-- 		  <artifactId>amqp-client</artifactId> -->
 <!-- 		  <version>3.1.4</version> -->
 <!-- 		</dependency> -->
+=======
+
+>>>>>>> branch 'master' of git@github.com:jeffywon/COS.git
 		<!-- Mule Dependencies -->
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-amqp</artifactId>
+			<version>${mule.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.mule</groupId>
 			<artifactId>mule-core</artifactId>
@@ -166,12 +175,15 @@
 		</dependency>
 
 		<!-- Mule Transports -->
+<<<<<<< HEAD
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.mule.transports</groupId> -->
 <!-- 			<artifactId>mule-transport-amqp</artifactId> -->
 <!-- 			<version>3.4.0-SNAPSHOT</version> -->
 <!-- 			<scope>provided</scope> -->
 <!-- 		</dependency> -->
+=======
+>>>>>>> branch 'master' of git@github.com:jeffywon/COS.git
 		<dependency>
 			<groupId>org.mule.transports</groupId>
 			<artifactId>mule-transport-file</artifactId>
