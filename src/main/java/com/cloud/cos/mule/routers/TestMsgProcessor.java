@@ -11,6 +11,7 @@ import org.mule.api.MuleEvent;
 import org.mule.api.MuleException;
 import org.mule.api.MuleMessage;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.api.transport.PropertyScope;
 import org.mule.module.client.MuleClient;
 import org.mule.routing.AbstractAggregator;
 import org.mule.routing.correlation.CollectionCorrelatorCallback;
@@ -55,14 +56,14 @@ public class TestMsgProcessor extends AbstractAggregator implements
 			MuleMessage result = client.send("http://" + apiLocation.getHost()
 					+ ":" + apiLocation.getPort() + apiLocation.getApi(),
 					msg.getPayload(), props);
-			// log.info("the one client message:" + result);
+			 log.info("the one client message:" + result);
 			payloadList.add(result.getPayload(String.class));
 		}
 		String payload = JSON.toJSONString(payloadList);
-		// log.info("the all message" + payload);
-		event.setFlowVariable("sendto", "huahua>>>>>>>>>>><><><><>");
-		// msg.setPayload(payload);
-		// event.setMessage(msg);
+		 log.info("the all message" + payload);
+		 msg.setPayload(payload);
+		 msg.setProperty("sendto", "HUACLOUD", PropertyScope.APPLICATION);
+		 event.setMessage(msg);
 		return event;
 	}
 }
