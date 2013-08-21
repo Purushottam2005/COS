@@ -147,7 +147,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Recive_Message_Direct" entity-id="302ad7cc-3ba1-494e-a91f-97afa26e317a">
+    <flow SubFlow="false" name="Recive_Message_Direct" entity-id="97a11aa5-4d1c-480e-a1de-2071193b3e74">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -253,7 +253,7 @@
             </endpoint>
         </lane>
     </flow>
-    <flow SubFlow="false" name="direct-messageFlow1" entity-id="1b37c469-de0e-4b05-a203-dfb624c55cc8">
+    <flow SubFlow="false" name="direct-messageFlow1" entity-id="40f1481e-f7b8-4617-984d-37c4b49f871a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
