@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="return_http">
-    <flow SubFlow="false" name="return_httpFlow1" entity-id="90a5ffd8-1130-45d4-9b0c-d0df0493f622">
+    <flow SubFlow="false" name="return_httpFlow1" entity-id="f004509d-bc5f-4db2-bdb6-a6210decb9a4">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -22,7 +22,7 @@
                     <property value="" name="contentType"/>
                     <property value="false" name="disableTransportTransformer"/>
                     <property value="" name="password"/>
-                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="request-response" name="exchange-pattern"/>
                     <property value="" name="ref"/>
                     <property value="" name="transformer-refs"/>
                     <property value="" name="httpLabel"/>
@@ -31,6 +31,7 @@
                     <property value="true" name="auxiliary;erased;encoding"/>
                     <property value="return" name="path"/>
                     <property value="" name="encoding"/>
+                    <property value="" name="responseTransformer-refs"/>
                     <property value="" name="user"/>
                     <property value="10000" name="responseTimeout"/>
                     <property value="" name="mimeType"/>
@@ -39,22 +40,36 @@
                 </properties>
                 <description></description>
             </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="1664db11-2726-4798-818b-c8906b3b605f">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;Send Message&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" name="message"/>
+                    <property value="" name="returnClass"/>
+                    <property value="false" name="ignoreBadInput"/>
+                    <property name="updated"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="mimeType"/>
+                </properties>
+                <description></description>
+            </pattern>
             <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#2">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="8089" name="port"/>
                     <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="8089" name="port"/>
                     <property value="" name="contentType"/>
                     <property value="" name="password"/>
                     <property value="request-response" name="exchange-pattern"/>
                     <property name="updated"/>
                     <property value="true" name="auxiliary;erased;encoding"/>
-                    <property value="" name="encoding"/>
                     <property value="return" name="path"/>
+                    <property value="" name="encoding"/>
                     <property value="" name="responseTransformer-refs"/>
-                    <property value="3" name="auxiliary;index"/>
-                    <property value="10000" name="responseTimeout"/>
                     <property value="" name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="3" name="auxiliary;index"/>
                     <property value="true" name="auxiliary;erased;contentType"/>
                     <property value="localhost" name="host"/>
                     <property value="false" name="followRedirects"/>
@@ -71,67 +86,54 @@
                 </properties>
                 <description></description>
             </endpoint>
-            <scope type="http://www.mulesoft.org/schema/mule/core/catch-exception-strategy" name="Catch Exception Strategy3" entity-id="Catch Exception Strategy#1">
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="return_httpFlow2" entity-id="deb4e601-a952-4774-8019-576a0dea8b9c">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="5b4793d9-530a-4fd4-926e-b85856e471f1">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/https/endpoint" name="HTTP" entity-id="7af453df-f7bf-49c8-84e3-0dfd85d51111">
+                <graphicalData height="173" width="68" y="193" x="19"/>
                 <properties>
-                    <property value="" name="labelConfigureConditionalExecutionUsingExpression"/>
+                    <property value="true" name="auxiliary;erased;contentType"/>
+                    <property value="8089" name="port"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="localhost" name="host"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="false" name="keep-alive"/>
+                    <property value="" name="contentType"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="" name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="httpLabel"/>
                     <property name="updated"/>
-                    <property value="" name="when"/>
-                    <property value="true" name="enableNotifications"/>
-                    <property value="4" name="auxiliary;index"/>
+                    <property value="" name="address"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
+                    <property value="return" name="path"/>
+                    <property value="" name="responseTransformer-refs"/>
+                    <property value="" name="user"/>
+                    <property value="" name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="" name="connector-ref"/>
                 </properties>
                 <description></description>
-                <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
-                        <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Add exception message" entity-id="Groovy#1">
-                            <graphicalData height="0" width="0" y="0" x="0"/>
-                            <properties>
-<property name="returnClass"/>
-<property name="ignoreBadInput"/>
-<property name="encoding"/>
-<property value="5" name="auxiliary;index"/>
-<property name="mimeType"/>
-<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-    <property value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
-    <property value="Groovy" name="engine"/>
-    <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
-    <property value="true" name="isProcessed$$$$"/>
-    <property value="6" name="auxiliary;wrapIn"/>
-    <property value="6" name="auxiliary;index"/>
-</property-collection>
-<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
-    <property value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
-    <property value="Groovy" name="engine"/>
-    <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
-    <property value="true" name="isProcessed$$$$"/>
-    <property value="6" name="auxiliary;wrapIn"/>
-    <property value="6" name="auxiliary;index"/>
-</property-collection>
-                            </properties>
-                        </pattern>
-                        <pattern type="http://www.mulesoft.org/schema/mule/core/properties-transformer" name="Set http status 404" entity-id="Property#1">
-                            <graphicalData height="0" width="0" y="0" x="0"/>
-                            <properties>
-<property value="http.status" name="propertyName"/>
-<property value="http://www.mulesoft.org/schema/mule/core/set-property" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-<property value="500" name="value"/>
-<property value="8" name="auxiliary;index"/>
-                            </properties>
-                        </pattern>
-                        <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#1">
-                            <graphicalData height="0" width="0" y="0" x="0"/>
-                            <properties>
-<property name="sourceClass"/>
-<property name="returnClass"/>
-<property name="ignoreBadInput"/>
-<property name="encoding"/>
-<property name="mapper-ref"/>
-<property value="9" name="auxiliary;index"/>
-<property name="mimeType"/>
-                            </properties>
-                        </pattern>
-                    </lane>
-                </compartment>
-            </scope>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="cd41da4c-b256-4243-a2b6-26f50c5efef5">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;Get Message&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;" name="message"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="" name="returnClass"/>
+                    <property value="false" name="ignoreBadInput"/>
+                    <property name="updated"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="mimeType"/>
+                </properties>
+                <description></description>
+            </pattern>
         </lane>
     </flow>
     <description></description>

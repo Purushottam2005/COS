@@ -5,6 +5,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <flow name="ServiceChoiceRouterFlow1" doc:name="ServiceChoiceRouterFlow1">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8086" path="router" doc:name="HTTP"/>
+        <message-properties-transformer doc:name="Message Properties"/>
         <choice doc:name="Choice">
             <when expression="#[message.inboundProperties['sendto']=='one']">
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Portal" path="one"/>

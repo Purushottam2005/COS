@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="ServiceChoiceRouter">
-    <flow SubFlow="false" name="ServiceChoiceRouterFlow1" entity-id="fe42cd48-6d54-4ec5-89e2-ba85ac730cb7">
+    <flow SubFlow="false" name="ServiceChoiceRouterFlow1" entity-id="e4aa93bc-01fe-444f-87c4-5050703aed92">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -13,138 +13,131 @@
             <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
                 <graphicalData height="334" width="68" y="199" x="19"/>
                 <properties>
-                    <property value="true" name="auxiliary;erased;contentType"/>
                     <property value="8086" name="port"/>
-                    <property value="true" name="auxiliary;erased;mimeType"/>
                     <property value="localhost" name="host"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="false" name="keep-alive"/>
-                    <property value="" name="contentType"/>
-                    <property value="false" name="disableTransportTransformer"/>
-                    <property value="" name="password"/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
                     <property value="request-response" name="exchange-pattern"/>
-                    <property value="" name="ref"/>
-                    <property value="" name="transformer-refs"/>
-                    <property value="" name="httpLabel"/>
-                    <property name="updated"/>
-                    <property value="" name="address"/>
-                    <property value="true" name="auxiliary;erased;encoding"/>
-                    <property value="" name="encoding"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
                     <property value="router" name="path"/>
-                    <property value="" name="responseTransformer-refs"/>
-                    <property value="" name="user"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
                     <property value="2" name="auxiliary;index"/>
-                    <property value="" name="mimeType"/>
-                    <property value="10000" name="responseTimeout"/>
-                    <property value="" name="connector-ref"/>
+                    <property name="connector-ref"/>
                 </properties>
-                <description></description>
             </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/message-properties-transformer" name="Message Properties" entity-id="a93e4a60-f8ed-429c-9012-7551f00abc39">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+            </pattern>
             <splitter index="3" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
-                <graphicalData height="393" width="332" y="38" x="147"/>
+                <graphicalData height="393" width="440" y="38" x="147"/>
                 <properties>
-                    <property name="updated"/>
                     <property value="3" name=";INDEX"/>
-                    <property-collection name="e06fa41e-ea51-4d18-815c-d20cad5efab6">
+                    <property-collection name="1e7117a1-a26b-40c0-b34b-bef306ced82a">
                         <property value="true" name="choice.otherwise"/>
-                        <property value="" name="choice.expression"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
-                    <property-collection name="2150f1a5-a695-4f4d-9a9e-e8eaa68db177">
-                        <property value="#[message.inboundProperties['sendto']=='three']" name="choice.expression"/>
-                        <property-collection name="choice.attributes">
-                            <property value="#[message.inboundProperties['sendto']=='three']" name="expression"/>
-                        </property-collection>
-                    </property-collection>
-                    <property-collection name="810f6fe7-3ca8-4e91-95bc-edaac82b2d4f">
+                    <property-collection name="7c1bbf7c-b803-4e50-9f71-182fd87c4672">
                         <property value="#[message.inboundProperties['sendto']=='one']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['sendto']=='one']" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="5734b375-72d0-4c12-a5da-31f0b4af9b54">
+                    <property-collection name="a0e87a1e-d244-4e53-b004-96ff6f068c22">
+                        <property value="#[message.inboundProperties['sendto']=='three']" name="choice.expression"/>
+                        <property-collection name="choice.attributes">
+                            <property value="#[message.inboundProperties['sendto']=='three']" name="expression"/>
+                        </property-collection>
+                    </property-collection>
+                    <property-collection name="fbb5f6cf-6b09-4bf2-8fba-bf9ad9a7076e">
                         <property value="#[message.inboundProperties['sendto']=='two']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[message.inboundProperties['sendto']=='two']" name="expression"/>
                         </property-collection>
                     </property-collection>
                 </properties>
-                <description></description>
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2">
                     <properties>
-                        <property name="updated"/>
                         <property value="3" name=";INDEX"/>
-                        <property-collection name="e06fa41e-ea51-4d18-815c-d20cad5efab6">
+                        <property-collection name="1e7117a1-a26b-40c0-b34b-bef306ced82a">
                             <property value="true" name="choice.otherwise"/>
-                            <property value="" name="choice.expression"/>
                             <property-collection name="choice.attributes"/>
                         </property-collection>
-                        <property-collection name="2150f1a5-a695-4f4d-9a9e-e8eaa68db177">
-                            <property value="#[message.inboundProperties['sendto']=='three']" name="choice.expression"/>
-                            <property-collection name="choice.attributes">
-<property value="#[message.inboundProperties['sendto']=='three']" name="expression"/>
-                            </property-collection>
-                        </property-collection>
-                        <property-collection name="810f6fe7-3ca8-4e91-95bc-edaac82b2d4f">
+                        <property-collection name="7c1bbf7c-b803-4e50-9f71-182fd87c4672">
                             <property value="#[message.inboundProperties['sendto']=='one']" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[message.inboundProperties['sendto']=='one']" name="expression"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="5734b375-72d0-4c12-a5da-31f0b4af9b54">
+                        <property-collection name="a0e87a1e-d244-4e53-b004-96ff6f068c22">
+                            <property value="#[message.inboundProperties['sendto']=='three']" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[message.inboundProperties['sendto']=='three']" name="expression"/>
+                            </property-collection>
+                        </property-collection>
+                        <property-collection name="fbb5f6cf-6b09-4bf2-8fba-bf9ad9a7076e">
                             <property value="#[message.inboundProperties['sendto']=='two']" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[message.inboundProperties['sendto']=='two']" name="expression"/>
                             </property-collection>
                         </property-collection>
                     </properties>
-                    <description></description>
                 </pattern>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="5" hadOnlyOneElement="false" entity-id="810f6fe7-3ca8-4e91-95bc-edaac82b2d4f">
+                    <lane isChoiceOtherwiseLane="false" index="5" hadOnlyOneElement="false" entity-id="7c1bbf7c-b803-4e50-9f71-182fd87c4672">
                         <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP to Portal" entity-id="HTTP#2">
-                            <graphicalData height="71" width="98" y="52" x="295"/>
+                            <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="true" name="auxiliary;erased;mimeType"/>
 <property value="8081" name="port"/>
-<property value="" name="contentType"/>
-<property value="" name="password"/>
-<property value="request-response" name="exchange-pattern"/>
-<property name="updated"/>
-<property value="true" name="auxiliary;erased;encoding"/>
-<property value="one" name="path"/>
-<property value="" name="encoding"/>
-<property value="" name="responseTransformer-refs"/>
-<property value="" name="mimeType"/>
-<property value="10000" name="responseTimeout"/>
-<property value="5" name="auxiliary;index"/>
-<property value="true" name="auxiliary;erased;contentType"/>
 <property value="localhost" name="host"/>
-<property value="false" name="followRedirects"/>
+<property name="businessEventsLabel"/>
+<property name="followRedirects"/>
 <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-<property value="false" name="keep-alive"/>
-<property value="false" name="disableTransportTransformer"/>
-<property value="" name="ref"/>
-<property value="" name="transformer-refs"/>
-<property value="" name="httpLabel"/>
-<property value="" name="address"/>
+<property name="keep-alive"/>
+<property name="contentType"/>
+<property name="disableTransportTransformer"/>
+<property name="password"/>
+<property value="request-response" name="exchange-pattern"/>
+<property name="tracking:enable-default-events"/>
+<property name="ref"/>
+<property name="transformer-refs"/>
+<property name="httpLabel"/>
+<property name="address"/>
+<property value="one" name="path"/>
+<property name="encoding"/>
+<property name="responseTransformer-refs"/>
 <property value="POST" name="method"/>
-<property value="" name="user"/>
-<property value="" name="connector-ref"/>
+<property name="user"/>
+<property name="responseTimeout"/>
+<property name="mimeType"/>
+<property value="5" name="auxiliary;index"/>
+<property name="connector-ref"/>
                             </properties>
-                            <description></description>
                         </endpoint>
                         <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="Custom Processor" entity-id="Custom Processor#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property name="auxiliary;moved-from"/>
 <property value="com.cloud.cos.mule.routers.ResourceMsgProcessor" name="class"/>
+<property value="6" name="auxiliary;index"/>
                             </properties>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="8" hadOnlyOneElement="false" entity-id="5734b375-72d0-4c12-a5da-31f0b4af9b54">
+                    <lane isChoiceOtherwiseLane="false" index="8" hadOnlyOneElement="false" entity-id="fbb5f6cf-6b09-4bf2-8fba-bf9ad9a7076e">
                         <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP to Paas" entity-id="HTTP#3">
-                            <graphicalData height="71" width="91" y="142" x="295"/>
+                            <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="8081" name="port"/>
 <property value="localhost" name="host"/>
@@ -172,24 +165,21 @@
 <property name="connector-ref"/>
                             </properties>
                         </endpoint>
-                        <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="ef25d566-a98c-4123-829b-8d29bd07573f">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="Append String#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="true" name="auxiliary;erased;mimeType"/>
 <property value="    2" name="message"/>
-<property value="" name="returnClass"/>
-<property value="false" name="ignoreBadInput"/>
-<property name="updated"/>
-<property value="true" name="auxiliary;erased;encoding"/>
-<property value="" name="encoding"/>
-<property value="" name="mimeType"/>
+<property name="returnClass"/>
+<property name="ignoreBadInput"/>
+<property name="encoding"/>
+<property name="mimeType"/>
+<property value="9" name="auxiliary;index"/>
                             </properties>
-                            <description></description>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="11" hadOnlyOneElement="false" entity-id="2150f1a5-a695-4f4d-9a9e-e8eaa68db177">
+                    <lane isChoiceOtherwiseLane="false" index="11" hadOnlyOneElement="false" entity-id="a0e87a1e-d244-4e53-b004-96ff6f068c22">
                         <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP to sub Cos" entity-id="HTTP#4">
-                            <graphicalData height="71" width="111" y="232" x="295"/>
+                            <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="8081" name="port"/>
 <property value="localhost" name="host"/>
@@ -217,22 +207,19 @@
 <property name="connector-ref"/>
                             </properties>
                         </endpoint>
-                        <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="022ba804-0a60-4a77-9369-bbaf4458d9cf">
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="Append String#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
-<property value="true" name="auxiliary;erased;mimeType"/>
 <property value="    3" name="message"/>
-<property value="" name="returnClass"/>
-<property value="false" name="ignoreBadInput"/>
-<property name="updated"/>
-<property value="true" name="auxiliary;erased;encoding"/>
-<property value="" name="encoding"/>
-<property value="" name="mimeType"/>
+<property name="returnClass"/>
+<property name="ignoreBadInput"/>
+<property name="encoding"/>
+<property name="mimeType"/>
+<property value="12" name="auxiliary;index"/>
                             </properties>
-                            <description></description>
                         </pattern>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="14" hadOnlyOneElement="false" entity-id="e06fa41e-ea51-4d18-815c-d20cad5efab6">
+                    <lane isChoiceOtherwiseLane="true" index="14" hadOnlyOneElement="false" entity-id="1e7117a1-a26b-40c0-b34b-bef306ced82a">
                         <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP to Default Server" entity-id="HTTP#5">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
