@@ -20,7 +20,7 @@
             <property name="nullReturnsTrue"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="inboundEndpoint_http" entity-id="238cb199-3a42-46da-8a4a-039797dca542">
+    <flow SubFlow="false" name="inboundEndpoint_http" entity-id="c9fb8ed1-c865-49c7-9d38-fc27e7c27f5c">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -62,45 +62,37 @@
             <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="Set Payload" entity-id="Set Payload#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property name="updated"/>
                     <property value="#[message.outboundProperties['auth1'] = &quot;auth1&quot;]" name="value"/>
                     <property value="5" name="auxiliary;index"/>
                 </properties>
-                <description></description>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="Set Payload" entity-id="Set Payload#2">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property name="updated"/>
                     <property value="#[message.outboundProperties['auth2'] = 'auth2']" name="value"/>
                     <property value="6" name="auxiliary;index"/>
                 </properties>
-                <description></description>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/expression-transformer" name="Expression" entity-id="Expression#3">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="message.outboundProperties['auth1']  + '--------------' + message.outboundProperties['auth2']" name="expression"/>
-                    <property value="true" name="auxiliary;erased;mimeType"/>
-                    <property value="" name="returnClass"/>
-                    <property value="false" name="ignoreBadInput"/>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
                     <property value="true" name="returnSourceIfNull"/>
-                    <property name="updated"/>
-                    <property value="true" name="auxiliary;erased;encoding"/>
-                    <property value="" name="encoding"/>
+                    <property name="custom-evaluator"/>
+                    <property name="encoding"/>
+                    <property name="evaluator"/>
+                    <property name="mimeType"/>
                     <property value="7" name="auxiliary;index"/>
-                    <property value="" name="mimeType"/>
                 </properties>
-                <description></description>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/flow-ref" name="Flow Reference" entity-id="Flow Reference#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property name="updated"/>
                     <property value="CustomizedFilter" name="name"/>
                     <property value="8" name="auxiliary;index"/>
                 </properties>
-                <description></description>
             </pattern>
             <scope type="http://www.mulesoft.org/schema/mule/core/catch-exception-strategy" name="Catch Exception Strategy" entity-id="Catch Exception Strategy#1">
                 <properties>
@@ -120,7 +112,7 @@
 <property name="mimeType"/>
 <property value="10" name="auxiliary;index"/>
 <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
-    <property value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
+    <property value="&#xA;                    &#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
     <property value="Groovy" name="engine"/>
     <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
     <property value="true" name="isProcessed$$$$"/>
@@ -128,7 +120,7 @@
     <property value="11" name="auxiliary;wrapIn"/>
 </property-collection>
 <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
-    <property value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
+    <property value="&#xA;                    &#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
     <property value="Groovy" name="engine"/>
     <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
     <property value="true" name="isProcessed$$$$"/>
@@ -163,7 +155,7 @@
             </scope>
         </lane>
     </flow>
-    <flow SubFlow="true" name="CustomizedFilter" entity-id="60e436ee-0b5b-454f-98fa-4bfa1e547d7e">
+    <flow SubFlow="true" name="CustomizedFilter" entity-id="94c9e262-18d1-438f-a1e2-6e1c840ad06e">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
