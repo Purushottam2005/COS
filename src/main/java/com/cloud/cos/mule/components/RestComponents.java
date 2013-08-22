@@ -21,7 +21,7 @@ public class RestComponents implements ApplicationContextAware{
 	}
 
 	@GET
-	@Path("/apps/{app_id}/reduce?reduce_count={reduce_count}")
+	@Path("/apps/{app_id}/{reduce_count}")
 	public Response getData(@Context UriInfo uriInfo) {
 		MultivaluedMap<String, String> params = uriInfo.getPathParameters();
 		

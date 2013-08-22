@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
+
+	<expression-filter expression="message.outboundProperties['auth1']=='auth1'"
+		name="filterauth1" doc:name="Expression" />
+	<expression-filter expression="message.outboundProperties['auth2']=='auth2'"
+		name="filterauth2" doc:name="Expression" />
+
+	<flow name="inboundEndpoint_http" doc:name="inboundEndpoint_http">
+		<http:inbound-endpoint exchange-pattern="request-response"
+			host="localhost" port="8083" path="v1" doc:name="HTTP" />
+		<set-payload
+			value="#[message.outboundProperties['auth1'] = &quot;auth1&quot;]"
+			doc:name="Set Payload" />
+		<set-payload value="#[message.outboundProperties['auth2'] = 'auth2']"
+			doc:name="Set Payload" />
+		<expression-transformer
+			expression="message.outboundProperties['auth1']  + '--------------' + message.outboundProperties['auth2']"
+			doc:name="Expression" returnSourceIfNull="true" />
+		<flow-ref name="CustomizedFilter" doc:name="Flow Reference" />
+		<catch-exception-strategy doc:name="Catch Exception Strategy">
+			<scripting:transformer doc:name="Add exception message">
+				<scripting:script engine="Groovy">
+                    <scripting:text><![CDATA[def payload = new org.mule.example.ReservationResponse()
+payload.addError("Error processing request")
+payload]]></scripting:text>
+				</scripting:script>
+			</scripting:transformer>
+			<set-property propertyName="http.status" value="500"
+				doc:name="Set http status 404" />
+			<json:object-to-json-transformer
+				doc:name="Object to JSON" />
+		</catch-exception-strategy>
+	</flow>
+	<sub-flow name="CustomizedFilter" doc:name="CustomizedFilter">
+		<json:object-to-json-transformer
+			doc:name="Object to JSON" />
+		<and-filter doc:name="And">
+			<filter ref="filterauth1" />
+			<filter ref="filterauth2" />
+		</and-filter>
+	</sub-flow>
+</mule>
