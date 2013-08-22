@@ -3,14 +3,14 @@
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
   xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:amqp="http://www.mulesoft.org/schema/mule/amqp"
   xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core"
-  version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  version="CE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
 
   <amqp:connector name="amqp_config"  virtualHost="/test_host2" username="root" password="root" doc:name="AMQP Connector"
-    validateConnections="true" host="localhost"/>
+    validateConnections="true" />
   <amqp:endpoint exchangeName="directEx" queueName="directQ" routingKey="routing.key" exchangeType="direct"
     name="amqp_direct_endpoint" responseTimeout="10000" doc:name="AMQP" queueDurable="true" />
 

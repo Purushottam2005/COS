@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:amqp="http://www.mulesoft.org/schema/mule/amqp" xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd">
+
+	<amqp:connector name="amqp_connect" virtualHost="/test_host2"
+		username="root" password="root" doc:name="AMQP Connector"
+		validateConnections="true" />
+	<amqp:endpoint exchangeName="directEx" queueName="directQ"
+		routingKey="routing.key" exchangeType="direct" name="amqp_direct"
+		responseTimeout="10000" doc:name="AMQP" queueDurable="true" />
+
+	<flow name="inboundendpoint_anqp" doc:name="inboundendpoint_anqp">
+		<http:inbound-endpoint exchange-pattern="request-response"
+			host="localhost" port="8090" path="direct" doc:name="HTTP" />
+		<set-payload value="#['im a Direct message'.getBytes()]"
+			doc:name="Set payload for amqp message as ByteArray" />
+        <amqp:outbound-endpoint responseTimeout="10000" connector-ref="amqp_connect" ref="amqp_direct"
+      doc:name="Send Direct Message"/>
+		<set-payload value="#['Message Sended']" doc:name="Set payload as String" />
+		<logger message="Direct message sended" level="INFO" doc:name="Logger" />
+		<catch-exception-strategy doc:name="Catch Exception Strategy">
+			<scripting:transformer doc:name="Add exception message">
+				<scripting:script engine="Groovy">
+                    <scripting:text><![CDATA[def payload = new org.mule.example.ReservationResponse()
+payload.addError("Error processing request")
+payload]]></scripting:text>
+				</scripting:script>
+			</scripting:transformer>
+			<set-property propertyName="http.status" value="500"
+				doc:name="Set http status 404" />
+			<json:object-to-json-transformer
+				doc:name="Object to JSON" />
+		</catch-exception-strategy>
+	</flow>
+	
+	<flow name="Recive_Message" doc:name="Recive_Message">
+    <amqp:inbound-endpoint responseTimeout="10000" connector-ref="amqp_connect" ref="amqp_direct"
+      doc:name="Recive Direct Message" />
+    <byte-array-to-string-transformer doc:name="Transform bytearray message to String" />
+    <logger message="*****I recived a direct message from AMQP: #[payload]" level="INFO" doc:name="Logger" />
+    <message-properties-transformer doc:name="Message Properties">
+      <add-message-property key="message" value="#[payload]" />
+    </message-properties-transformer>
+    <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8888"
+      path="extrest" method="POST" doc:name="HTTP" />
+        <flow-ref name="CustomizedFilter2" doc:name="Flow Reference"/>
+  </flow>
+    <sub-flow name="CustomizedFilter2" doc:name="CustomizedFilter2">
+		<json:object-to-json-transformer
+			doc:name="Object to JSON" />
+		<and-filter doc:name="And">
+			<filter ref="filterauth1" />
+			<filter ref="filterauth2" />
+		</and-filter>
+	</sub-flow>
+	 <flow name="direct-messageFlow" doc:name="direct-messageFlow">
+    <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8888" path="extrest"
+      doc:name="HTTP" />
+    <logger message="*****Called with parameter message: #[message.inboundProperties['message']]" level="INFO"
+      doc:name="Logger" />
+    <set-payload value="#[message.inboundProperties['message']]" doc:name="Set Payload" />
+  </flow>
+
+</mule>
