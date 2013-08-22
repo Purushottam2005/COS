@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="Router">
-    <flow SubFlow="false" name="RouterFlow1" entity-id="8d20b5d0-ba2c-4445-9594-26be047312b2">
+    <flow SubFlow="false" name="RouterFlow1" entity-id="3231874b-e061-44b4-8f6a-6c8096ca6007">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -49,26 +49,26 @@
             <splitter index="4" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property-collection name="5483b064-3414-4140-a97d-d8cfb598f96f">
+                    <property-collection name="32cf6fcc-d108-49a7-b822-118a27a81b4d">
                         <property value="#[way='resource']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[way='resource']" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="bbda7366-3acb-4364-8a91-39d7cbefa7cf">
+                    <property-collection name="6df85f0d-c873-4e4b-a2be-7ccddfa529b2">
                         <property value="#[way='api']" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[way='api']" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="5e01e3bc-1725-4e02-a4a0-85b348eb9c5e">
+                    <property-collection name="1bf31a41-47c6-4b03-9ade-83909050bca5">
                         <property value="true" name="choice.otherwise"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
                 </properties>
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2"/>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="6" hadOnlyOneElement="false" entity-id="5483b064-3414-4140-a97d-d8cfb598f96f">
+                    <lane isChoiceOtherwiseLane="false" index="6" hadOnlyOneElement="false" entity-id="32cf6fcc-d108-49a7-b822-118a27a81b4d">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="ResourceLocationProcess" entity-id="Processor Chain#1">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -87,7 +87,7 @@
                             </compartment>
                         </scope>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="9" hadOnlyOneElement="false" entity-id="bbda7366-3acb-4364-8a91-39d7cbefa7cf">
+                    <lane isChoiceOtherwiseLane="false" index="9" hadOnlyOneElement="false" entity-id="6df85f0d-c873-4e4b-a2be-7ccddfa529b2">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="ApiLocationProcess" entity-id="Processor Chain#2">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
@@ -106,7 +106,7 @@
                             </compartment>
                         </scope>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="12" hadOnlyOneElement="false" entity-id="5e01e3bc-1725-4e02-a4a0-85b348eb9c5e">
+                    <lane isChoiceOtherwiseLane="true" index="12" hadOnlyOneElement="false" entity-id="1bf31a41-47c6-4b03-9ade-83909050bca5">
                         <scope type="http://www.mulesoft.org/schema/mule/core/processor-chain" name="OtherProcess" entity-id="Processor Chain#3">
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>

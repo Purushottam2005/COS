@@ -11,19 +11,18 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<http:inbound-endpoint exchange-pattern="request-response"
 			host="localhost" port="8081" doc:name="HTTP" />
 		<custom-processor doc:name="Choice_Processor"
-			class="com.cloud.cos.mule.routers.ChoiceFlowMsgProcessor" name="Choice_Processor"/>
+			class="com.cloud.cos.mule.routers.ChoiceFlowMsgProcessor" name="Custom_Processor1"/>
 		<choice doc:name="Choice">
 			<when expression="#[way='resource']">
 				<processor-chain doc:name="ResourceLocationProcess">
 					<custom-processor doc:name="ResourceLocationProcess"
-						class="com.cloud.cos.mule.routers.ResourceLocationProcess"  />
+						class="com.cloud.cos.mule.routers.ResourceLocationProcess" name="Custom_Processor3"/>
 				</processor-chain>
 			</when>
 			<when expression="#[way='api']">
 				<processor-chain doc:name="ApiLocationProcess">
 					<custom-processor doc:name="ApiLocationLocationProcess"
-						class="com.cloud.cos.mule.routers.ApiLocationLocationProcess"
-						 />
+						class="com.cloud.cos.mule.routers.ApiLocationLocationProcess" name="Custom_Processor4"/>
 				</processor-chain>
 			</when>
 			<otherwise>

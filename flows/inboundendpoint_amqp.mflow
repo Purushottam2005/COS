@@ -15,13 +15,13 @@
             <property name="dispatcherPoolFactory-ref"/>
             <property name="immediate"/>
             <property value="root" name="username"/>
-            <property name="prefetchSize"/>
             <property name="defaultReturnListener-ref"/>
+            <property name="prefetchSize"/>
             <property name="ackMode"/>
             <property value="/test_host2" name="virtualHost"/>
             <property name="priority"/>
-            <property value="amqp_connect" name="name"/>
             <property name="prefetchCount"/>
+            <property value="amqp_connect" name="name"/>
             <property name="dynamicNotification"/>
             <property name="noLocal"/>
             <property value="1" name="auxiliary;index"/>
@@ -29,72 +29,71 @@
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/amqp/endpoint" name="AMQP" entity-id="AMQP#1">
         <properties>
-            <property value="true" name="auxiliary;erased;mimeType"/>
+            <property name="businessEventsLabel"/>
             <property value="directEx" name="exchangeName"/>
-            <property value="false" name="queueAutoDelete"/>
-            <property value="false" name="exchangeAutoDelete"/>
-            <property value="one-way" name="exchange-pattern"/>
-            <property name="updated"/>
-            <property value="true" name="auxiliary;erased;encoding"/>
-            <property value="amqp_direct" name="name"/>
+            <property name="queueAutoDelete"/>
+            <property name="disableTransportTransformer"/>
+            <property value="direct" name="exchangeType"/>
+            <property name="exchangeAutoDelete"/>
+            <property name="queueExclusive"/>
+            <property name="exchange-pattern"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="routing.key" name="routingKey"/>
+            <property name="ref"/>
+            <property name="transformer-refs"/>
+            <property name="address"/>
             <property value="true" name="queueDurable"/>
-            <property value="" name="encoding"/>
-            <property value="" name="responseTransformer-refs"/>
+            <property value="amqp_direct" name="name"/>
+            <property name="encoding"/>
+            <property name="responseTransformer-refs"/>
             <property value="directQ" name="queueName"/>
-            <property value="" name="consumerTag"/>
-            <property value="false" name="exchangeDurable"/>
-            <property value="" name="mimeType"/>
+            <property name="consumerTag"/>
+            <property name="exchangeDurable"/>
+            <property name="mimeType"/>
             <property value="10000" name="responseTimeout"/>
             <property value="2" name="auxiliary;index"/>
-            <property value="direct" name="exchangeType"/>
-            <property value="false" name="disableTransportTransformer"/>
-            <property value="false" name="queueExclusive"/>
-            <property value="routing.key" name="routingKey"/>
-            <property value="" name="ref"/>
-            <property value="" name="transformer-refs"/>
-            <property value="" name="address"/>
-            <property value="" name="connector-ref"/>
+            <property name="connector-ref"/>
         </properties>
-        <description></description>
     </global-element>
-    <flow SubFlow="false" name="inboundendpoint_anqp" entity-id="f26f5b56-8030-4675-b003-b146566b5f8a">
+    <flow SubFlow="false" name="inboundendpoint_anqp" entity-id="f8390440-3102-4872-9d5b-610b7e3a73c6">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property value="3" name="auxiliary;index"/>
             <property name="tracking:enable-default-events"/>
+            <property value="3" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
             <graphicalData height="0" width="0" y="0" x="0"/>
             <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="8090" name="port"/>
+                    <property value="true" name="auxiliary;erased;contentType"/>
+                    <property value="8091" name="port"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
                     <property value="localhost" name="host"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="followRedirects"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property name="keep-alive"/>
-                    <property name="contentType"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="password"/>
+                    <property value="false" name="keep-alive"/>
+                    <property value="" name="contentType"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="" name="password"/>
                     <property value="request-response" name="exchange-pattern"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="httpLabel"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
-                    <property name="encoding"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="httpLabel"/>
+                    <property name="updated"/>
+                    <property value="" name="address"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
                     <property value="direct" name="path"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="method"/>
-                    <property name="user"/>
+                    <property value="" name="responseTransformer-refs"/>
+                    <property value="" name="user"/>
                     <property value="4" name="auxiliary;index"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
-                    <property name="connector-ref"/>
+                    <property value="" name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="" name="connector-ref"/>
                 </properties>
+                <description></description>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="Set payload for amqp message as ByteArray" entity-id="Set Payload#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
@@ -121,13 +120,13 @@
                     <property name="address"/>
                     <property name="queueDurable"/>
                     <property name="encoding"/>
-                    <property name="queueName"/>
                     <property name="responseTransformer-refs"/>
+                    <property name="queueName"/>
                     <property name="consumerTag"/>
                     <property name="exchangeDurable"/>
-                    <property value="6" name="auxiliary;index"/>
-                    <property value="10000" name="responseTimeout"/>
                     <property name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="6" name="auxiliary;index"/>
                     <property value="amqp_connect" name="connector-ref"/>
                 </properties>
             </endpoint>
@@ -162,23 +161,23 @@
 <property name="returnClass"/>
 <property name="ignoreBadInput"/>
 <property name="encoding"/>
-<property value="10" name="auxiliary;index"/>
 <property name="mimeType"/>
+<property value="10" name="auxiliary;index"/>
 <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
     <property value="&#xA;                    &#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
     <property value="Groovy" name="engine"/>
     <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
     <property value="true" name="isProcessed$$$$"/>
-    <property value="11" name="auxiliary;wrapIn"/>
     <property value="11" name="auxiliary;index"/>
+    <property value="11" name="auxiliary;wrapIn"/>
 </property-collection>
 <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
     <property value="&#xA;                    &#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
     <property value="Groovy" name="engine"/>
     <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
     <property value="true" name="isProcessed$$$$"/>
-    <property value="11" name="auxiliary;wrapIn"/>
     <property value="11" name="auxiliary;index"/>
+    <property value="11" name="auxiliary;wrapIn"/>
 </property-collection>
                             </properties>
                         </pattern>
@@ -186,8 +185,8 @@
                             <graphicalData height="0" width="0" y="0" x="0"/>
                             <properties>
 <property value="http.status" name="propertyName"/>
-<property value="http://www.mulesoft.org/schema/mule/core/set-property" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
 <property value="500" name="value"/>
+<property value="http://www.mulesoft.org/schema/mule/core/set-property" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
 <property value="13" name="auxiliary;index"/>
                             </properties>
                         </pattern>
@@ -199,8 +198,8 @@
 <property name="ignoreBadInput"/>
 <property name="encoding"/>
 <property name="mapper-ref"/>
-<property value="14" name="auxiliary;index"/>
 <property name="mimeType"/>
+<property value="14" name="auxiliary;index"/>
                             </properties>
                         </pattern>
                     </lane>
@@ -208,13 +207,13 @@
             </scope>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Recive_Message" entity-id="a3359445-369f-4d76-95d3-c2fa8f13c20c">
+    <flow SubFlow="false" name="Recive_Message" entity-id="b8e636c5-ab56-4425-a744-66e11ed84ae2">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property value="15" name="auxiliary;index"/>
             <property name="tracking:enable-default-events"/>
+            <property value="15" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#3">
             <graphicalData height="0" width="0" y="0" x="0"/>
@@ -236,13 +235,13 @@
                     <property name="address"/>
                     <property name="queueDurable"/>
                     <property name="encoding"/>
-                    <property name="queueName"/>
                     <property name="responseTransformer-refs"/>
+                    <property name="queueName"/>
                     <property name="consumerTag"/>
                     <property name="exchangeDurable"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="10000" name="responseTimeout"/>
                     <property name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="16" name="auxiliary;index"/>
                     <property value="amqp_connect" name="connector-ref"/>
                 </properties>
             </endpoint>
@@ -252,8 +251,8 @@
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
-                    <property value="17" name="auxiliary;index"/>
                     <property name="mimeType"/>
+                    <property value="17" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
@@ -273,21 +272,21 @@
                     <property name="scope"/>
                     <property name="overwrite"/>
                     <property name="encoding"/>
-                    <property value="19" name="auxiliary;index"/>
                     <property name="mimeType"/>
+                    <property value="19" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/add-message-property;0">
                         <property value="#[payload]" name="value"/>
                         <property value="true" name="isProcessed$$$$"/>
-                        <property value="20" name="auxiliary;wrapIn"/>
-                        <property value="20" name="auxiliary;index"/>
                         <property value="message" name="key"/>
+                        <property value="20" name="auxiliary;index"/>
+                        <property value="20" name="auxiliary;wrapIn"/>
                     </property-collection>
                 </properties>
             </pattern>
             <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#2">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="8888" name="port"/>
+                    <property value="8889" name="port"/>
                     <property value="localhost" name="host"/>
                     <property name="businessEventsLabel"/>
                     <property name="followRedirects"/>
@@ -299,17 +298,17 @@
                     <property value="request-response" name="exchange-pattern"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property value="extrest" name="path"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property value="POST" name="method"/>
                     <property name="user"/>
-                    <property value="21" name="auxiliary;index"/>
-                    <property name="mimeType"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="21" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
@@ -322,13 +321,13 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="CustomizedFilter2" entity-id="41b444d5-1e57-4e29-b6a7-bd06ecf149b6">
+    <flow SubFlow="true" name="CustomizedFilter2" entity-id="3c638c39-636f-4567-8da7-fa3cfb1b7965">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property value="23" name="auxiliary;index"/>
             <property name="tracking:enable-default-events"/>
+            <property value="23" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#4">
             <graphicalData height="0" width="0" y="0" x="0"/>
@@ -340,8 +339,8 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mapper-ref"/>
-                    <property value="24" name="auxiliary;index"/>
                     <property name="mimeType"/>
+                    <property value="24" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/and-filter" name="And" entity-id="And#1">
@@ -351,33 +350,33 @@
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/filter;0">
                         <property value="filterauth1" name="ref"/>
                         <property value="true" name="isProcessed$$$$"/>
-                        <property value="26" name="auxiliary;wrapIn"/>
                         <property value="26" name="auxiliary;index"/>
+                        <property value="26" name="auxiliary;wrapIn"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/filter;1">
                         <property value="filterauth2" name="ref"/>
                         <property value="true" name="isProcessed$$$$"/>
-                        <property value="27" name="auxiliary;wrapIn"/>
                         <property value="27" name="auxiliary;index"/>
+                        <property value="27" name="auxiliary;wrapIn"/>
                     </property-collection>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="direct-messageFlow" entity-id="742ac296-d2b0-4899-9cbb-5d4884955db8">
+    <flow SubFlow="false" name="direct-messageFlow" entity-id="9dfcf126-17c7-43d2-a2ce-2d96a75d17d5">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property value="28" name="auxiliary;index"/>
             <property name="tracking:enable-default-events"/>
+            <property value="28" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#5">
             <graphicalData height="0" width="0" y="0" x="0"/>
             <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#3">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property value="8888" name="port"/>
+                    <property value="8889" name="port"/>
                     <property value="localhost" name="host"/>
                     <property name="businessEventsLabel"/>
                     <property name="followRedirects"/>
@@ -389,17 +388,17 @@
                     <property value="request-response" name="exchange-pattern"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property value="extrest" name="path"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
                     <property name="user"/>
-                    <property value="29" name="auxiliary;index"/>
-                    <property name="mimeType"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="29" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>

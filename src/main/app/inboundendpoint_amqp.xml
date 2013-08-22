@@ -22,7 +22,7 @@ http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amq
 
 	<flow name="inboundendpoint_anqp" doc:name="inboundendpoint_anqp">
 		<http:inbound-endpoint exchange-pattern="request-response"
-			host="localhost" port="8090" path="direct" doc:name="HTTP" />
+			host="localhost" port="8091" path="direct" doc:name="HTTP" />
 		<set-payload value="#['im a Direct message'.getBytes()]"
 			doc:name="Set payload for amqp message as ByteArray" />
         <amqp:outbound-endpoint responseTimeout="10000" connector-ref="amqp_connect" ref="amqp_direct"
@@ -52,7 +52,7 @@ payload]]></scripting:text>
     <message-properties-transformer doc:name="Message Properties">
       <add-message-property key="message" value="#[payload]" />
     </message-properties-transformer>
-    <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8888"
+    <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8889"
       path="extrest" method="POST" doc:name="HTTP" />
         <flow-ref name="CustomizedFilter2" doc:name="Flow Reference"/>
   </flow>
@@ -65,7 +65,7 @@ payload]]></scripting:text>
 		</and-filter>
 	</sub-flow>
 	 <flow name="direct-messageFlow" doc:name="direct-messageFlow">
-    <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8888" path="extrest"
+    <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8889" path="extrest"
       doc:name="HTTP" />
     <logger message="*****Called with parameter message: #[message.inboundProperties['message']]" level="INFO"
       doc:name="Logger" />

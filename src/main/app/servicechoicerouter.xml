@@ -8,17 +8,19 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
         <choice doc:name="Choice">
             <when expression="#[message.inboundProperties['sendto']=='one']">
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Portal" path="one"/>
+                <custom-processor class="com.cloud.cos.mule.routers.ResourceMsgProcessor" doc:name="Custom Processor"/>
             </when>
             <when expression="#[message.inboundProperties['sendto']=='two']">
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Paas" path="two"/>
+                <append-string-transformer message="    2" doc:name="Append String"/>
             </when>
             <when expression="#[message.inboundProperties['sendto']=='three']">
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to sub Cos" path="three"/>
+                <append-string-transformer message="    3" doc:name="Append String"/>
             </when>
             <otherwise>
                 <http:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" method="POST" doc:name="HTTP to Default Server" path="default"/>
             </otherwise>
         </choice>
-        <custom-processor class="com.cloud.cos.mule.routers.ResourceMsgProcessor" doc:name="Custom Processor" />
     </flow>
 </mule>
