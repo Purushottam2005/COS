@@ -38,6 +38,11 @@ public class ResourceLocationDaoImpl  extends HibernateDaoSupport implements Res
 		log.info("getAllList ResourceLocations");
 		return getHibernateTemplate().find("from ResourceLocation");
 	}
+	@Override
+	public ResourceLocation getResourceLocation(int id) {
+		log.info("get ResourceLocation by id");
+		return (ResourceLocation) getHibernateTemplate().find("form ResourceLocation where id = " + id);
+	}
 	
 	
 }

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="RouteAllApi">
-    <flow SubFlow="false" name="RouteAllApiFlow1" entity-id="7ce1d759-3c9e-4f5c-a90b-853b2183fde2">
+    <flow SubFlow="false" name="outboundrouter" entity-id="867bc956-dd31-4fe1-83e2-321f591ca5b6">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
-            <property value="1" name="auxiliary;index"/>
             <property name="tracking:enable-default-events"/>
+            <property value="1" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
             <graphicalData height="0" width="0" y="0" x="0"/>
             <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
-                <graphicalData height="173" width="68" y="118" x="19"/>
+                <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="8086" name="port"/>
                     <property value="localhost" name="host"/>
@@ -25,29 +25,29 @@
                     <property value="request-response" name="exchange-pattern"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property value="routeall" name="path"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property name="method"/>
                     <property name="user"/>
-                    <property value="2" name="auxiliary;index"/>
-                    <property name="mimeType"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="2" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="Custom Processor" entity-id="Custom Processor#2">
-                <graphicalData height="71" width="120" y="118" x="275"/>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="Custom Processor" entity-id="Custom Processor#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="com.cloud.cos.mule.routers.TestMsgProcessor" name="class"/>
-                    <property value="5" name="auxiliary;index"/>
+                    <property value="3" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <endpoint message-exchange-pattern="RequestResponse" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#2">
-                <graphicalData height="71" width="68" y="118" x="455"/>
+                <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
                     <property value="8080" name="port"/>
                     <property value="localhost" name="host"/>
@@ -61,20 +61,77 @@
                     <property value="request-response" name="exchange-pattern"/>
                     <property name="tracking:enable-default-events"/>
                     <property name="ref"/>
-                    <property name="httpLabel"/>
                     <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
                     <property name="address"/>
-                    <property name="encoding"/>
                     <property value="rest/test" name="path"/>
+                    <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
                     <property value="PUT" name="method"/>
                     <property name="user"/>
-                    <property value="6" name="auxiliary;index"/>
-                    <property name="mimeType"/>
                     <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
+            <scope type="http://www.mulesoft.org/schema/mule/core/catch-exception-strategy" name="Catch Exception Strategy" entity-id="Catch Exception Strategy#1">
+                <properties>
+                    <property name="labelConfigureConditionalExecutionUsingExpression"/>
+                    <property name="when"/>
+                    <property name="enableNotifications"/>
+                    <property value="5" name="auxiliary;index"/>
+                </properties>
+                <compartment entity-id="compartment#1">
+                    <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
+                        <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Add exception message" entity-id="Groovy#1">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property name="returnClass"/>
+<property name="ignoreBadInput"/>
+<property name="encoding"/>
+<property name="mimeType"/>
+<property value="6" name="auxiliary;index"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+    <property value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
+    <property value="Groovy" name="engine"/>
+    <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
+    <property value="7" name="auxiliary;index"/>
+    <property value="7" name="auxiliary;wrapIn"/>
+</property-collection>
+<property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+    <property value="&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;" name="text"/>
+    <property value="Groovy" name="engine"/>
+    <property value="def payload = new org.mule.example.ReservationResponse()&#xA;payload.addError(&quot;Error processing request&quot;)&#xA;payload" name="inner-text"/>
+    <property value="7" name="auxiliary;index"/>
+    <property value="7" name="auxiliary;wrapIn"/>
+</property-collection>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/core/properties-transformer" name="Set http status 404" entity-id="Property#1">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property value="http.status" name="propertyName"/>
+<property value="500" name="value"/>
+<property value="http://www.mulesoft.org/schema/mule/core/set-property" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+<property value="9" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                        <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="Object to JSON#1">
+                            <graphicalData height="0" width="0" y="0" x="0"/>
+                            <properties>
+<property name="sourceClass"/>
+<property name="returnClass"/>
+<property name="ignoreBadInput"/>
+<property name="encoding"/>
+<property name="mapper-ref"/>
+<property name="mimeType"/>
+<property value="10" name="auxiliary;index"/>
+                            </properties>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
         </lane>
     </flow>
     <description></description>

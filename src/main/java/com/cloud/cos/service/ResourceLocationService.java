@@ -9,5 +9,7 @@ public interface ResourceLocationService {
 	public boolean addResource(ResourceLocation resource);
 	
 	public List<ResourceLocation> getAllList();
+	
+	public ResourceLocation getResourceLocation(int id);
 
 }

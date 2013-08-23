@@ -8,4 +8,6 @@ public interface ResourceLocationDao{
 	public boolean save(ResourceLocation resourceLocation);
 	
 	public List<ResourceLocation> getAllList();
+	
+	public ResourceLocation getResourceLocation(int id);
 }

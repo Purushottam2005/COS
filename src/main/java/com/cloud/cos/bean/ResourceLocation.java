@@ -23,11 +23,11 @@ public class ResourceLocation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "resource_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	
-	@Column(name = "resource_name", columnDefinition = "varchar(255)")
+	@Column(name = "name", columnDefinition = "varchar(255)")
 	String name;
 	
 	@Column(name = "host", columnDefinition = "varchar(255)")
@@ -35,8 +35,9 @@ public class ResourceLocation implements Serializable {
 	
 	@Column(name = "port")
 	int port;
-
 	
+	@Column(name = "protocol")
+	String protocol;
 
 	public String getHost() {
 		return host;
@@ -72,6 +73,14 @@ public class ResourceLocation implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getProtocol() {
+		return protocol;
+	}
+
+	public void setProtocol(String protocol) {
+		this.protocol = protocol;
 	}
 	
 }

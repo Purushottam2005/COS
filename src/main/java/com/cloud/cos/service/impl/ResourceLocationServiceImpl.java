@@ -28,4 +28,10 @@ public class ResourceLocationServiceImpl implements ResourceLocationService {
 		return resourceDao.getAllList();
 	}
 
+	@Override
+	public ResourceLocation getResourceLocation(int id) {
+		log.info("get service");
+		return resourceDao.getResourceLocation(id);
+	}
+
 }
