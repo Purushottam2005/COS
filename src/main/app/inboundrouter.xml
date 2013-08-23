@@ -6,6 +6,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     <flow name="inboundrouterFlow1" doc:name="inboundrouterFlow1">
         <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8080" path="routeByPool" doc:name="HTTP"/>
         <append-string-transformer message="&gt;&gt;&gt;heihei" doc:name="Append String"/>
-        <custom-processor class="com.cloud.cos.mule.routers.InboundCustomProcessor" doc:name="inboundProcessor" name="inboundProcessor"/>
+        <custom-processor class="com.cloud.cos.mule.routers.InboundCustomProcessor" doc:name="inboundProcessor" name="inbound Processor"/>
     </flow>
 </mule>

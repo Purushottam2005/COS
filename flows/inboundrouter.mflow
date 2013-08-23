@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="inboundrouter">
-    <flow SubFlow="false" name="inboundrouterFlow1" entity-id="0bedee47-7ea4-43d8-af3e-3333ac7ec2d1">
+    <flow SubFlow="false" name="inboundrouterFlow1" entity-id="c2459e95-5b3d-412a-bc87-0d3e8ae22811">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -53,12 +53,9 @@
             <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="inboundProcessor" entity-id="Custom Processor#1">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
-                    <property name="updated"/>
-                    <property value="inboundProcessor" name="name"/>
                     <property value="com.cloud.cos.mule.routers.InboundCustomProcessor" name="class"/>
                     <property value="4" name="auxiliary;index"/>
                 </properties>
-                <description></description>
             </pattern>
         </lane>
     </flow>
