@@ -25,7 +25,7 @@ public class ResourceLocation implements Serializable {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	int resourceId;
 	
 	@Column(name = "name", columnDefinition = "varchar(255)")
 	String name;
@@ -55,12 +55,12 @@ public class ResourceLocation implements Serializable {
 		this.port = port;
 	}
 
-	public int getId() {
-		return id;
+	public int getResourceId() {
+		return resourceId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setResourceId(int resourceId) {
+		this.resourceId = resourceId;
 	}
 
 	public static long getSerialversionuid() {

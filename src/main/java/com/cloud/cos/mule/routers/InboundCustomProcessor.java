@@ -11,12 +11,14 @@ import org.mule.api.MuleEvent;
 import org.mule.api.MuleException;
 import org.mule.api.MuleMessage;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.api.transport.PropertyScope;
 import org.mule.module.client.MuleClient;
 import org.mule.routing.AbstractAggregator;
 import org.mule.routing.correlation.CollectionCorrelatorCallback;
 import org.mule.routing.correlation.EventCorrelatorCallback;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.fastjson.JSON;
 import com.cloud.cos.bean.ResourceLocation;
 import com.cloud.cos.service.ResourceLocationService;
 
@@ -32,7 +34,7 @@ public class InboundCustomProcessor extends AbstractAggregator implements Messag
 		ResourceLocation resourceLocation = resourceService.getResourceLocation(1);
 		
 		System.out.println("###################################");
-		System.out.println("id:                        " + resourceLocation.getId());
+		System.out.println("id:                        " + resourceLocation.getResourceId());
 		System.out.println("name:                      " + resourceLocation.getName());
 		System.out.println("host:                      " + resourceLocation.getHost());
 		System.out.println("port:                      " + resourceLocation.getPort());
@@ -49,6 +51,11 @@ public class InboundCustomProcessor extends AbstractAggregator implements Messag
 				msg.getPayload(), props);
 		 log.info("the one client message:" + result);
 		payloadList.add(result.getPayload(String.class));
+		String payload = JSON.toJSONString(payloadList);
+		 log.info("the all message" + payload);
+		 msg.setPayload(payload);
+		 msg.setProperty("sendto", "HUACLOUD", PropertyScope.APPLICATION);
+		 event.setMessage(msg);
 		return event;
 	}
 

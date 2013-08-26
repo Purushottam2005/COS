@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="inboundrouter">
-    <flow SubFlow="false" name="inboundrouterFlow1" entity-id="76b5a85a-cb58-49fe-a2cb-9e629681cea7">
-        <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
-            <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
-            <property value="1" name="auxiliary;index"/>
-        </properties>
-        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="http">
+    <flow SubFlow="false" name="httpFlow1" entity-id="5db83952-4148-4ebe-b7ab-6ab4a0beb055">
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="3e0a6cb0-328e-4f6f-a73d-10738f1024da">
             <graphicalData height="0" width="0" y="0" x="0"/>
-            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
-                <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/https/endpoint" name="HTTP" entity-id="d046faf9-f0da-497f-9938-23a15dabd251">
+                <graphicalData height="173" width="68" y="96" x="19"/>
                 <properties>
                     <property value="true" name="auxiliary;erased;contentType"/>
                     <property value="8080" name="port"/>
@@ -26,27 +19,30 @@
                     <property value="" name="ref"/>
                     <property value="" name="transformer-refs"/>
                     <property value="" name="httpLabel"/>
-                    <property value="" name="address"/>
                     <property name="updated"/>
+                    <property value="" name="address"/>
                     <property value="true" name="auxiliary;erased;encoding"/>
-                    <property value="routeByPool" name="path"/>
                     <property value="" name="encoding"/>
+                    <property value="httpmethod" name="path"/>
                     <property value="" name="responseTransformer-refs"/>
                     <property value="" name="user"/>
-                    <property value="10000" name="responseTimeout"/>
                     <property value="" name="mimeType"/>
-                    <property value="2" name="auxiliary;index"/>
+                    <property value="10000" name="responseTimeout"/>
                     <property value="" name="connector-ref"/>
                 </properties>
                 <description></description>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/core/custom-processor" name="inboundProcessor" entity-id="Custom Processor#1">
+            <pattern type="http://www.mulesoft.org/schema/mule/core/append-string-transformer" name="Append String" entity-id="9603b9a0-5375-4c01-ac9e-5edabca50c65">
                 <graphicalData height="0" width="0" y="0" x="0"/>
                 <properties>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;!" name="message"/>
+                    <property value="" name="returnClass"/>
+                    <property value="false" name="ignoreBadInput"/>
                     <property name="updated"/>
-                    <property value="inboundProcessor" name="name"/>
-                    <property value="com.cloud.cos.mule.routers.InboundCustomProcessor" name="class"/>
-                    <property value="3" name="auxiliary;index"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="mimeType"/>
                 </properties>
                 <description></description>
             </pattern>
